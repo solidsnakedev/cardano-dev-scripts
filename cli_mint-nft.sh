@@ -85,7 +85,7 @@ cat ${data_path}/mint-nft-metadata.json
 
 # Query utxos from wallet
 info "Queryng adddress: $(cat ${address_path}/${wallet_origin}.addr)"
-${cardano_script_path}/query-utxo.sh ${wallet_origin}
+${cardano_script_path}/cli-query-utxo.sh ${wallet_origin}
 
 # Get the total balance, and all utxos so they can be consumed when building the transaction
 info "Getting all UTxO from ${wallet_origin}"

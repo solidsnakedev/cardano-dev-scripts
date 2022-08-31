@@ -15,7 +15,7 @@ info "Datum Hash : ${datum_hash}"
 
 read -p "Insert plutus script name (example AlwaysSucceeds) : " script_name
 info "Querying script utxo and filter by Datum Hash"
-${cardano_script_path}/query-utxo.sh ${script_name} | grep ${datum_hash}
+${cardano_script_path}/cli-query-utxo.sh ${script_name} | grep ${datum_hash}
 if [[ $? -ne 0 ]]; then error "Could not find Datum Hash in script utxos!. Insert a different Datum value"; exit 1; fi
 
 read -p "Insert TxHash from script utxo: " txIn_script
@@ -27,7 +27,7 @@ read -p "Insert redeemer value (example 42) : " redeemer_value
 info "Select a wallet to be used as tx-in and collateral"
 ls -1 ${address_path}/*.addr
 read -p "Insert wallet origin address (example payment1) : " wallet_origin
-${cardano_script_path}/query-utxo.sh ${wallet_origin}
+${cardano_script_path}/cli-query-utxo.sh ${wallet_origin}
 read -p "Insert TxHash : " txIn_origin
 read -p "Insert TxIx id : " txInId_origin
 

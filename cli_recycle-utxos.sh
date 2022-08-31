@@ -15,7 +15,7 @@ wallet_origin=${1}
 
 #--------- Run program ---------
 info "Queryng adddress: $(cat ${address_path}/${wallet_origin}.addr)"
-${cardano_script_path}/query-utxo.sh ${wallet_origin}
+${cardano_script_path}/cli-query-utxo.sh ${wallet_origin}
 
 #--------- Query utxos and save it in fullUtxo.out ---------
 ${cardanocli} query utxo \

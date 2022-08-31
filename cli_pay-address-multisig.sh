@@ -9,11 +9,11 @@ info "This program requires 2 witnesses to sign the transaction in order to spen
 
 info "List of Addresses" && ls -1 ${address_path}/*.addr
 
-read -p "Insert origin 1 address (example payment1) : " wallet_origin1 && ${cardano_script_path}/query-utxo.sh ${wallet_origin1}
+read -p "Insert origin 1 address (example payment1) : " wallet_origin1 && ${cardano_script_path}/cli-query-utxo.sh ${wallet_origin1}
 read -p "Insert tx-in : " txIn1
 read -p "Insert tx-in id : " txInId1
 
-read -p "Insert origin 2 address (example payment2) : " wallet_origin2 && ${cardano_script_path}/query-utxo.sh ${wallet_origin2}
+read -p "Insert origin 2 address (example payment2) : " wallet_origin2 && ${cardano_script_path}/cli-query-utxo.sh ${wallet_origin2}
 read -p "Insert tx-in : " txIn2
 read -p "Insert tx-in id : " txInId2
 

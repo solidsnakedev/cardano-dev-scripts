@@ -14,7 +14,7 @@ read -p "Insert witness origin 2 address (example payment2) : " wallet_origin2
 read -p "Insert native script name (example multisig-policy) : " policy_name
 
 # Query utxos
-${cardano_script_path}/query-utxo.sh ${policy_name}
+${cardano_script_path}/cli-query-utxo.sh ${policy_name}
 # Get the total balance, and all utxos so they can be consumed when building the transaction
 info "Getting all utxos from ${policy_name}"
 readarray results <<< "$(generate_UTXO ${policy_name})"

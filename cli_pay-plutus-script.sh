@@ -23,7 +23,7 @@ datum_value=${4}
 #--------- Run program ---------
 
 # Query utxos
-${cardano_script_path}/query-utxo.sh ${wallet_origin}
+${cardano_script_path}/cli-query-utxo.sh ${wallet_origin}
 # Get the total balance, and all utxos so they can be consumed when building the transaction
 info "Getting all utxos from ${wallet_origin}"
 readarray results <<< "$(generate_UTXO ${wallet_origin})"
