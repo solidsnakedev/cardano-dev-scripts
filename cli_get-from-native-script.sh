@@ -42,20 +42,20 @@ ${cardanocli} transaction witness \
     --tx-body-file ${transaction_path}/${policy_name}-tx.build \
     --signing-key-file ${key_path}/${wallet_origin1}.skey \
     --testnet-magic ${TESTNET_MAGIC} \
-    --out-file ${key_path}/${wallet_origin1}.witness
+    --out-file ${transaction_path}/${wallet_origin1}.witness
 
 info "Signing transaction witness 2"
 ${cardanocli} transaction witness \
     --tx-body-file ${transaction_path}/${policy_name}-tx.build \
     --signing-key-file ${key_path}/${wallet_origin2}.skey \
     --testnet-magic ${TESTNET_MAGIC} \
-    --out-file ${key_path}/${wallet_origin2}.witness
+    --out-file ${transaction_path}/${wallet_origin2}.witness
 
 info "Assembling transaction witness 1 and 2"
 ${cardanocli} transaction assemble \
     --tx-body-file ${transaction_path}/${policy_name}-tx.build \
-    --witness-file ${key_path}/${wallet_origin1}.witness \
-    --witness-file ${key_path}/${wallet_origin2}.witness \
+    --witness-file ${transaction_path}/${wallet_origin1}.witness \
+    --witness-file ${transaction_path}/${wallet_origin2}.witness \
     --out-file ${transaction_path}/${policy_name}-tx.signed
 
 info "Submiting transaction"
