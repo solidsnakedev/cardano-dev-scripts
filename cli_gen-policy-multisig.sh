@@ -22,9 +22,9 @@ policy_name=${3}
 
 # Create policy script
 
-info "Creating ${script_path}/${policy_name}.script from 2 witnesses ${wallet_origin1} and ${wallet_origin2}"
+info "Creating ${native_script_path}/${policy_name}.script from 2 witnesses ${wallet_origin1} and ${wallet_origin2}"
 
-cat > ${script_path}/${policy_name}.script << EOF
+cat > ${native_script_path}/${policy_name}.script << EOF
 {
   "type": "all",
   "scripts":
@@ -40,6 +40,6 @@ cat > ${script_path}/${policy_name}.script << EOF
   ]
 }
 EOF
-cat ${script_path}/${policy_name}.script
+cat ${native_script_path}/${policy_name}.script
 
 info "This policy requires 2 witnesses in order to spend the utxo from the native script"

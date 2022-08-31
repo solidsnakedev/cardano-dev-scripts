@@ -11,13 +11,13 @@ if [[ "$#" -eq 0 || "$#" -ne 1 ]]; then error "Missing parameters" && info "Usag
 script_name=${1}
 
 # Verify if plutus script exists
-[[ -f ${script_path}/${script_name}.script ]] && info "OK ${script_name}.script exists" || { error "${script_name}.script missing"; exit 1; }
+[[ -f ${native_script_path}/${script_name}.script ]] && info "OK ${script_name}.script exists" || { error "${script_name}.script missing"; exit 1; }
 
 #--------- Run program ---------
 
 info "Creating ${address_path}/${script_name}.addr"
 ${cardanocli} address build \
-    --payment-script-file ${script_path}/${script_name}.script \
+    --payment-script-file ${native_script_path}/${script_name}.script \
     --testnet-magic $TESTNET_MAGIC \
     --out-file ${address_path}/${script_name}.addr
 info "Address: $(cat ${address_path}/${script_name}.addr)"

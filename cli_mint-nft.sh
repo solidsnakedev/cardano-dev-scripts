@@ -28,16 +28,16 @@ ipfs_cid=${6}
 # Verify if policy vkey exists
 [[ -f ${key_path}/${policy_name}.vkey ]] && info "OK ${policy_name}.vkey exists" || { error "${policy_name}.vkey missing"; exit 1; }
 # Verify if policy script exists
-[[ -f ${script_path}/${policy_name}.script ]] && info "OK ${policy_name}.script exists" || { error "${policy_name}.script missing"; exit 1; }
+[[ -f ${native_script_path}/${policy_name}.script ]] && info "OK ${policy_name}.script exists" || { error "${policy_name}.script missing"; exit 1; }
 # Verify if protocol exists
 [[ -f ${config_path}/protocol.json ]] && info "OK protocol.json exists" || { error "protocol.json missing"; exit 1; }
 
 #--------- Run program ---------
 
 info "Printing policy script file"
-cat ${script_path}/${policy_name}.script
+cat ${native_script_path}/${policy_name}.script
 # Compute policy id
-asset_policy_id=$(${cardanocli} transaction policyid --script-file ${script_path}/${policy_name}.script)
+asset_policy_id=$(${cardanocli} transaction policyid --script-file ${native_script_path}/${policy_name}.script)
 info "Policy ID: ${asset_policy_id}"
 
 info "Generating NFT metadata json file"
@@ -108,7 +108,7 @@ fi
 #min_amount=$(${cardanocli} transaction calculate-min-required-utxo \
 #    --babbage-era \
 #    --protocol-params-file ${config_path}/protocol.json \
-#    --tx-out-reference-script-file ${script_path}/${policy_name}.script \
+#    --tx-out-reference-script-file ${native_script_path}/${policy_name}.script \
 #    --tx-out $(cat ${address_path}/${wallet_origin}.addr)+0+"${token_amount} ${asset_policy_id}.${token_name}" | awk '{print $2}')
 #
 #info "Minimum UTxO: ${min_amount}"
@@ -120,7 +120,7 @@ ${cardanocli} transaction build-raw \
     ${tx_in} \
     --tx-out "$(cat ${address_path}/${wallet_origin}.addr)+${total_balance}+${all_native_assets}" \
     --mint="${token_amount} ${asset_policy_id}.${token_name}" \
-    --minting-script-file ${script_path}/${policy_name}.script \
+    --minting-script-file ${native_script_path}/${policy_name}.script \
     --metadata-json-file ${data_path}/mint-nft-metadata.json \
     --invalid-hereafter ${slot_number} \
     --out-file ${key_path}/${policy_name}-tx.raw
@@ -146,7 +146,7 @@ ${cardanocli} transaction build-raw \
     ${tx_in} \
     --tx-out "$(cat ${address_path}/${wallet_origin}.addr)+${final_balance}+${all_native_assets}" \
     --mint="${token_amount} ${asset_policy_id}.${token_name}" \
-    --minting-script-file ${script_path}/${policy_name}.script \
+    --minting-script-file ${native_script_path}/${policy_name}.script \
     --metadata-json-file ${data_path}/mint-nft-metadata.json \
     --invalid-hereafter ${slot_number} \
     --out-file ${key_path}/${policy_name}-tx.build

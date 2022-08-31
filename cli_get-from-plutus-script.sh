@@ -21,7 +21,7 @@ if [[ $? -ne 0 ]]; then error "Could not find Datum Hash in script utxos!. Inser
 read -p "Insert TxHash from script utxo: " txIn_script
 read -p "Insert TxIx id from script utxo: " txInId_script
 read -p "Insert amount to send from script utxo (example 500 ADA = 500,000,000 lovelace) : " amount
-ls -1 ${script_path}/*.plutus
+ls -1 ${plutus_script_path}/*.plutus
 read -p "Insert redeemer value (example 42) : " redeemer_value
 
 info "Select a wallet to be used as tx-in and collateral"
@@ -42,7 +42,7 @@ ${cardanocli} transaction build \
     --tx-in "${txIn_script}#${txInId_script}" \
     --tx-in-datum-value ${datum_value} \
     --tx-in-redeemer-value ${redeemer_value} \
-    --tx-in-script-file ${script_path}/${script_name}.plutus \
+    --tx-in-script-file ${plutus_script_path}/${script_name}.plutus \
     --tx-in-collateral "${txIn_origin}#${txInId_origin}" \
     --change-address $(cat ${address_path}/${wallet_origin}.addr) \
     --tx-out $(cat ${address_path}/${wallet_dest}.addr)+${amount} \

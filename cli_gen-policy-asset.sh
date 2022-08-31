@@ -17,13 +17,13 @@ policy_name=${1}
 #--------- Run program ---------
 
 # Create policy script
-info "Creating ${script_path}/${policy_name}.script"
+info "Creating ${native_script_path}/${policy_name}.script"
 
-cat > ${script_path}/${policy_name}.script << EOF
+cat > ${native_script_path}/${policy_name}.script << EOF
 {
   "type": "sig",
   "keyHash": "$(${cardanocli} address key-hash --payment-verification-key-file ${key_path}/${policy_name}.vkey)"
 }
 EOF
 
-cat ${script_path}/${policy_name}.script
+cat ${native_script_path}/${policy_name}.script

@@ -17,12 +17,12 @@ policy_name=${1}
 #--------- Run program ---------
 
 # Create policy script
-info "Creating ${script_path}/${policy_name}.script"
+info "Creating ${native_script_path}/${policy_name}.script"
 
 # Get slot number from policy script/
 slot_number=$(expr $(${cardanocli} query tip --testnet-magic ${TESTNET_MAGIC} | jq .slot?) + 10000)
 
-cat > ${script_path}/${policy_name}.script << EOF
+cat > ${native_script_path}/${policy_name}.script << EOF
 {
   "type": "all",
   "scripts":
@@ -39,4 +39,4 @@ cat > ${script_path}/${policy_name}.script << EOF
 }
 EOF
 
-cat ${script_path}/${policy_name}.script
+cat ${native_script_path}/${policy_name}.script

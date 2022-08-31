@@ -31,7 +31,7 @@ info "Building transaction"
 ${cardanocli} transaction build \
     --babbage-era \
     ${tx_in} \
-    --tx-in-script-file ${script_path}/${policy_name}.script \
+    --tx-in-script-file ${native_script_path}/${policy_name}.script \
     --change-address $(cat ${address_path}/${wallet_change}.addr) \
     --witness-override 2 \
     --testnet-magic ${TESTNET_MAGIC} \
