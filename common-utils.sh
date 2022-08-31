@@ -21,14 +21,19 @@ echo_yellow(){
   echo -e "${IYellow}$1${Reset}"
 }
 info(){
-  echo -e "${IGreen}[INFO] $1${Reset}"
+  echo -e "${IGreen}[INFO] [$(last_time)] $1${Reset}"
 }
 error(){
-  echo -e "${IRed}[ERROR] $1${Reset}"
+  echo -e "${IRed}[ERROR] [$(last_time)] $1${Reset}"
 }
 debug(){
-  echo -e "${ICyan}[DEBUG] $1${Reset}"
+  echo -e "${ICyan}[DEBUG] [$(last_time)] $1${Reset}"
 }
+
+last_time(){
+        echo $(date -u +"%Y-%m-%d %H:%M:%S")
+}
+
 
 
 #--------- Set the Path to your folders and binaries ---------
