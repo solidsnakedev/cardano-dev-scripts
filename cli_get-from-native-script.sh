@@ -6,7 +6,7 @@ source common-utils.sh
 #--------- Run program ---------
 info "The following program will consume all the utxos from the native script"
 
-info "Select witnesses of the native script" && ls -1 ${key_path}/*.addr
+info "Select witnesses of the native script" && ls -1 ${address_path}/*.addr
 
 read -p "Insert witness origin 1 address (example payment1) : " wallet_origin1
 read -p "Insert witness origin 2 address (example payment2) : " wallet_origin2 
@@ -23,7 +23,7 @@ total_balance=${results[0]}
 # Set utxo inputs
 tx_in=${results[1]}
 
-info "Select the receiver of the utxo" && ls -1 ${key_path}/*.addr
+info "Select the receiver of the utxo" && ls -1 ${address_path}/*.addr
 info "Note: utxo is consumed from native script and total amount is sent to change address"
 read -p "Insert change/receiver address (example payment3) : " wallet_change
 
@@ -32,7 +32,7 @@ ${cardanocli} transaction build \
     --babbage-era \
     ${tx_in} \
     --tx-in-script-file ${script_path}/${policy_name}.script \
-    --change-address $(cat ${key_path}/${wallet_change}.addr) \
+    --change-address $(cat ${address_path}/${wallet_change}.addr) \
     --witness-override 2 \
     --testnet-magic ${TESTNET_MAGIC} \
     --out-file ${key_path}/${policy_name}-tx.build

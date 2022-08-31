@@ -7,7 +7,7 @@ source common-utils.sh
 #--------- Run program ---------
 info "This program requires 2 witnesses to sign the transaction in order to spend the utxo"
 
-info "List of Addresses" && ls -1 ${key_path}/*.addr
+info "List of Addresses" && ls -1 ${address_path}/*.addr
 
 read -p "Insert origin 1 address (example payment1) : " wallet_origin1 && ${cardano_script_path}/query-utxo.sh ${wallet_origin1}
 read -p "Insert tx-in : " txIn1
@@ -27,8 +27,8 @@ ${cardanocli} transaction build \
     --babbage-era \
     --tx-in "${txIn1}#${txInId1}" \
     --tx-in "${txIn2}#${txInId2}" \
-    --tx-out $(cat ${key_path}/${wallet_dest}.addr)+${amount} \
-    --change-address $(cat ${key_path}/${wallet_change}.addr) \
+    --tx-out $(cat ${address_path}/${wallet_dest}.addr)+${amount} \
+    --change-address $(cat ${address_path}/${wallet_change}.addr) \
     --witness-override 2 \
     --testnet-magic ${TESTNET_MAGIC} \
     --out-file ${key_path}/multisig-tx.build

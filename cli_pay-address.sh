@@ -32,8 +32,8 @@ info "Building transaction"
 ${cardanocli} transaction build \
     --babbage-era \
     ${tx_in} \
-    --tx-out $(cat ${key_path}/${wallet_dest}.addr)+${amount} \
-    --change-address $(cat ${key_path}/${wallet_origin}.addr) \
+    --tx-out $(cat ${address_path}/${wallet_dest}.addr)+${amount} \
+    --change-address $(cat ${address_path}/${wallet_origin}.addr) \
     --testnet-magic ${TESTNET_MAGIC} \
     --out-file ${key_path}/tx.build
 

@@ -15,10 +15,10 @@ script_name=${1}
 
 #--------- Run program ---------
 
-info "Creating ${key_path}/${script_name}.addr"
+info "Creating ${address_path}/${script_name}.addr"
 ${cardanocli} address build \
     --payment-script-file ${script_path}/${script_name}.script \
     --testnet-magic $TESTNET_MAGIC \
-    --out-file ${key_path}/${script_name}.addr
-info "Address: $(cat ${key_path}/${script_name}.addr)"
-info "Native script address saved ${key_path}/${script_name}.addr"
+    --out-file ${address_path}/${script_name}.addr
+info "Address: $(cat ${address_path}/${script_name}.addr)"
+info "Native script address saved ${address_path}/${script_name}.addr"

@@ -25,7 +25,7 @@ ls -1 ${script_path}/*.plutus
 read -p "Insert redeemer value (example 42) : " redeemer_value
 
 info "Select a wallet to be used as tx-in and collateral"
-ls -1 ${key_path}/*.addr
+ls -1 ${address_path}/*.addr
 read -p "Insert wallet origin address (example payment1) : " wallet_origin
 ${cardano_script_path}/query-utxo.sh ${wallet_origin}
 read -p "Insert TxHash : " txIn_origin
@@ -44,8 +44,8 @@ ${cardanocli} transaction build \
     --tx-in-redeemer-value ${redeemer_value} \
     --tx-in-script-file ${script_path}/${script_name}.plutus \
     --tx-in-collateral "${txIn_origin}#${txInId_origin}" \
-    --change-address $(cat ${key_path}/${wallet_origin}.addr) \
-    --tx-out $(cat ${key_path}/${wallet_dest}.addr)+${amount} \
+    --change-address $(cat ${address_path}/${wallet_origin}.addr) \
+    --tx-out $(cat ${address_path}/${wallet_dest}.addr)+${amount} \
     --tx-out-datum-hash ${datum_hash} \
     --protocol-params-file ${config_path}/protocol.json \
     --out-file ${key_path}/${script_name}-tx.build

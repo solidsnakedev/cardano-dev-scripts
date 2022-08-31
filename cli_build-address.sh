@@ -23,7 +23,7 @@ info "Creating/Deriving cardano address from verification key"
 ${cardanocli} address build \
     --payment-verification-key-file ${key_path}/${wallet_name}.vkey \
     --stake-verification-key-file ${key_path}/${stake_name}.vkey \
-    --out-file ${key_path}/${wallet_name}.addr \
+    --out-file ${address_path}/${wallet_name}.addr \
     --testnet-magic $TESTNET_MAGIC
 
-info "Cardano address created ${key_path}/${wallet_name}.addr"
+info "Cardano address created ${address_path}/${wallet_name}.addr"

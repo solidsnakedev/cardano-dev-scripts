@@ -39,9 +39,9 @@ info "Building transaction"
 ${cardanocli} transaction build \
     --babbage-era \
     ${tx_in} \
-    --tx-out $(cat ${key_path}/${script_name}.addr)+${amount} \
+    --tx-out $(cat ${address_path}/${script_name}.addr)+${amount} \
     --tx-out-datum-hash ${datum_hash} \
-    --change-address $(cat ${key_path}/${wallet_origin}.addr) \
+    --change-address $(cat ${address_path}/${wallet_origin}.addr) \
     --testnet-magic ${TESTNET_MAGIC} \
     --out-file ${key_path}/plutus-tx.build
 

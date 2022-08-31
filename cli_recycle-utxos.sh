@@ -14,12 +14,12 @@ wallet_origin=${1}
 
 
 #--------- Run program ---------
-info "Queryng adddress: $(cat ${key_path}/${wallet_origin}.addr)"
+info "Queryng adddress: $(cat ${address_path}/${wallet_origin}.addr)"
 ${cardano_script_path}/query-utxo.sh ${wallet_origin}
 
 #--------- Query utxos and save it in fullUtxo.out ---------
 ${cardanocli} query utxo \
-    --address $(cat ${key_path}/${wallet_origin}.addr) \
+    --address $(cat ${address_path}/${wallet_origin}.addr) \
     --testnet-magic ${TESTNET_MAGIC} > ${data_path}/fullUtxo.out
 
 #--------- Remove 3 first rows, and sort balance ---------
@@ -51,7 +51,7 @@ info "Building transaction"
 ${cardanocli} transaction build \
     --babbage-era \
     ${tx_in} \
-    --change-address $(cat ${key_path}/${wallet_origin}.addr) \
+    --change-address $(cat ${address_path}/${wallet_origin}.addr) \
     --testnet-magic ${TESTNET_MAGIC} \
     --out-file ${key_path}/tx.build
 

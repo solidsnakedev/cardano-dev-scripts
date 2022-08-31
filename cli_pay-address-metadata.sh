@@ -31,7 +31,7 @@ info "Building transaction \n  Note: wallet origin and change address are the sa
 ${cardanocli} transaction build \
     --babbage-era \
     ${tx_in} \
-    --change-address $(cat ${key_path}/${wallet_origin}.addr) \
+    --change-address $(cat ${address_path}/${wallet_origin}.addr) \
     --metadata-json-file ${data_path}/${json_file}.json \
     --testnet-magic ${TESTNET_MAGIC} \
     --out-file ${key_path}/metadata-tx.build

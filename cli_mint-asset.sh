@@ -32,7 +32,7 @@ asset_policy_id=$(${cardanocli} transaction policyid --script-file ${script_path
 info "Policy ID: ${asset_policy_id}"
 
 # Query utxos from wallet
-info "Queryng adddress: $(cat ${key_path}/${wallet_origin}.addr)"
+info "Queryng adddress: $(cat ${address_path}/${wallet_origin}.addr)"
 ${cardano_script_path}/query-utxo.sh ${wallet_origin}
 
 # Get the total balance, and all utxos so they can be consumed when building the transaction
@@ -57,7 +57,7 @@ fi
 #    --babbage-era \
 #    --protocol-params-file ${config_path}/protocol.json \
 #    --tx-out-reference-script-file ${script_path}/${policy_name}.script \
-#    --tx-out $(cat ${key_path}/${wallet_origin}.addr)+0+"${token_amount} ${asset_policy_id}.${token_name}" | awk '{print $2}')
+#    --tx-out $(cat ${address_path}/${wallet_origin}.addr)+0+"${token_amount} ${asset_policy_id}.${token_name}" | awk '{print $2}')
 #
 #info "Minimum UTxO: ${min_amount}"
 
@@ -66,7 +66,7 @@ ${cardanocli} transaction build-raw \
     --babbage-era \
     --fee 0 \
     ${tx_in} \
-    --tx-out "$(cat ${key_path}/${wallet_origin}.addr)+${total_balance}+${all_native_assets}" \
+    --tx-out "$(cat ${address_path}/${wallet_origin}.addr)+${total_balance}+${all_native_assets}" \
     --mint="${token_amount} ${asset_policy_id}.${token_name}" \
     --minting-script-file ${script_path}/${policy_name}.script \
     --out-file ${key_path}/${policy_name}-tx.raw
@@ -89,7 +89,7 @@ ${cardanocli} transaction build-raw \
     --babbage-era \
     --fee ${fee} \
     ${tx_in} \
-    --tx-out "$(cat ${key_path}/${wallet_origin}.addr)+${final_balance}+${all_native_assets}" \
+    --tx-out "$(cat ${address_path}/${wallet_origin}.addr)+${final_balance}+${all_native_assets}" \
     --mint="${token_amount} ${asset_policy_id}.${token_name}" \
     --minting-script-file ${script_path}/${policy_name}.script \
     --out-file ${key_path}/${policy_name}-tx.build

@@ -9,9 +9,9 @@ if [[ "$#" -eq 0 || "$#" -ne 1 ]]; then error "Missing parameters" && info "Usag
 wallet_origin=${1}
 
 # Verify if wallet addr exists
-[[ -f ${key_path}/${wallet_origin}.addr ]] || { error "${wallet_origin}.addr missing"; exit 1; }
+[[ -f ${address_path}/${wallet_origin}.addr ]] || { error "${wallet_origin}.addr missing"; exit 1; }
 
 #--------- Run program ---------
 ${cardanocli} query utxo \
   --testnet-magic $TESTNET_MAGIC \
-  --address $(cat ${key_path}/${wallet_origin}.addr)
+  --address $(cat ${address_path}/${wallet_origin}.addr)

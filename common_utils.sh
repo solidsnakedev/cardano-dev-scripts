@@ -33,6 +33,7 @@ debug(){
 
 #--------- Set the Path to your folders and binaries ---------
 key_path="/node/keys"
+address_path="/node/addresses"
 script_path="/node/scripts"
 data_path="/node/data"
 config_path="/node/configuration"
@@ -48,7 +49,7 @@ generate_UTXO() #Parameter1=Address
     #--------- Query utxos and save it in fullUtxo.out ---------
     local wallet="${1}"
     ${cardanocli} query utxo \
-        --address $(cat ${key_path}/${wallet}.addr) \
+        --address $(cat ${address_path}/${wallet}.addr) \
         --testnet-magic ${TESTNET_MAGIC} > ${data_path}/fullUtxo.out
 
     #--------- Remove 3 first rows, and sort balance ---------
