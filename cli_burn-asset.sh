@@ -82,10 +82,10 @@ ${cardanocli} transaction build-raw \
     --tx-out "$(cat ${address_path}/${wallet_origin}.addr)+${total_balance}+${all_native_assets}" \
     --mint="-${amount_to_burn} ${native_asset_name}" \
     --minting-script-file ${native_script_path}/${policy_name}.script \
-    --out-file ${key_path}/${policy_name}-tx.raw
+    --out-file ${transaction_path}/${policy_name}-tx.raw
 
 fee=$(${cardanocli} transaction calculate-min-fee \
-    --tx-body-file ${key_path}/${policy_name}-tx.raw \
+    --tx-body-file ${transaction_path}/${policy_name}-tx.raw \
     --tx-in-count ${tx_cnt} \
     --tx-out-count 1 \
     --witness-count 2 \
@@ -106,19 +106,19 @@ ${cardanocli} transaction build-raw \
     --tx-out "$(cat ${address_path}/${wallet_origin}.addr)+${final_balance}+${all_native_assets}" \
     --mint="-${amount_to_burn} ${native_asset_name}" \
     --minting-script-file ${native_script_path}/${policy_name}.script \
-    --out-file ${key_path}/${policy_name}-tx.build
+    --out-file ${transaction_path}/${policy_name}-tx.build
 
 info "Signing transaction"
 ${cardanocli} transaction sign \
-    --tx-body-file ${key_path}/${policy_name}-tx.build \
+    --tx-body-file ${transaction_path}/${policy_name}-tx.build \
     --signing-key-file ${key_path}/${wallet_origin}.skey \
     --signing-key-file ${key_path}/${policy_name}.skey \
     --testnet-magic ${TESTNET_MAGIC} \
-    --out-file ${key_path}/${policy_name}-tx.signed
+    --out-file ${transaction_path}/${policy_name}-tx.signed
 
 info "Submiting transaction"
 ${cardanocli} transaction submit \
-    --tx-file ${key_path}/${policy_name}-tx.signed \
+    --tx-file ${transaction_path}/${policy_name}-tx.signed \
     --testnet-magic ${TESTNET_MAGIC}
 
 info "Wait for ~20 seconds so the transaction is in the blockchain."

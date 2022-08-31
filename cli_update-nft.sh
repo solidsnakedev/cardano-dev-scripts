@@ -87,10 +87,10 @@ ${cardanocli} transaction build-raw \
     --minting-script-file ${native_script_path}/${policy_name}.script \
     --metadata-json-file ${data_path}/mint-nft-metadata.json \
     --invalid-hereafter ${slot_number} \
-    --out-file ${key_path}/${policy_name}-tx.raw
+    --out-file ${transaction_path}/${policy_name}-tx.raw
 
 fee=$(${cardanocli} transaction calculate-min-fee \
-    --tx-body-file ${key_path}/${policy_name}-tx.raw \
+    --tx-body-file ${transaction_path}/${policy_name}-tx.raw \
     --tx-in-count ${tx_cnt} \
     --tx-out-count 1 \
     --witness-count 2 \
@@ -110,19 +110,19 @@ ${cardanocli} transaction build-raw \
     --minting-script-file ${native_script_path}/${policy_name}.script \
     --metadata-json-file ${data_path}/mint-nft-metadata.json \
     --invalid-hereafter ${slot_number} \
-    --out-file ${key_path}/${policy_name}-tx.build
+    --out-file ${transaction_path}/${policy_name}-tx.build
 
 info "Signing transaction"
 ${cardanocli} transaction sign \
-    --tx-body-file ${key_path}/${policy_name}-tx.build \
+    --tx-body-file ${transaction_path}/${policy_name}-tx.build \
     --signing-key-file ${key_path}/${wallet_origin}.skey \
     --signing-key-file ${key_path}/${policy_name}.skey \
     --testnet-magic ${TESTNET_MAGIC} \
-    --out-file ${key_path}/${policy_name}-tx.signed
+    --out-file ${transaction_path}/${policy_name}-tx.signed
 
 info "Submiting transaction"
 ${cardanocli} transaction submit \
-    --tx-file ${key_path}/${policy_name}-tx.signed \
+    --tx-file ${transaction_path}/${policy_name}-tx.signed \
     --testnet-magic ${TESTNET_MAGIC}
 
 info "Wait for ~20 seconds so the transaction is in the blockchain."

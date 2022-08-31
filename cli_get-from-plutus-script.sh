@@ -48,18 +48,18 @@ ${cardanocli} transaction build \
     --tx-out $(cat ${address_path}/${wallet_dest}.addr)+${amount} \
     --tx-out-datum-hash ${datum_hash} \
     --protocol-params-file ${config_path}/protocol.json \
-    --out-file ${key_path}/${script_name}-tx.build
+    --out-file ${transaction_path}/${script_name}-tx.build
 
 info "Signing transaction"
 ${cardanocli} transaction sign \
-    --tx-body-file ${key_path}/${script_name}-tx.build \
+    --tx-body-file ${transaction_path}/${script_name}-tx.build \
     --signing-key-file ${key_path}/${wallet_origin}.skey \
     --testnet-magic ${TESTNET_MAGIC} \
-    --out-file ${key_path}/${script_name}-tx.signed
+    --out-file ${transaction_path}/${script_name}-tx.signed
 
 info "Submiting transaction"
 ${cardanocli} transaction submit \
-    --tx-file ${key_path}/${script_name}-tx.signed \
+    --tx-file ${transaction_path}/${script_name}-tx.signed \
     --testnet-magic ${TESTNET_MAGIC}
 
 info "Wait for ~20 seconds so the transaction is in the blockchain."
