@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 # Verify correct number of arguments  ---------
 if [[ "$#" -eq 0 || "$#" -ne 3 ]]; then error "Missing parameters" && info "Usage: pay-address.sh <wallet-origin> <wallet-destination> <amount> "; exit 1; fi

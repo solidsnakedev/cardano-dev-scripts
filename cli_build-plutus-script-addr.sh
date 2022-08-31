@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 # Verify correct number of arguments  ---------
 if [[ "$#" -eq 0 || "$#" -ne 1 ]]; then error "Missing parameters" && info "Usage: build-plutus-script-addr.sh <script-name>"; exit 1; fi

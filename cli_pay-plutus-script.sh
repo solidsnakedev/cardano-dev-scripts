@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 # Verify correct number of arguments
 if [[ "$#" -eq 0 || "$#" -ne 4 ]]; then error "Missing parameters" && info "Usage: pay-plutus-script.sh <wallet-origin> <script-name> <amount> <datum> "; exit 1; fi

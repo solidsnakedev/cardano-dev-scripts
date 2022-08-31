@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 #--------- Verification process  ---------
 if [[ "$#" -eq 0 || "$#" -ne 1 ]]; then error "Missing parameters" && info "Usage: query-utxo <wallet-name>"; exit 1; fi

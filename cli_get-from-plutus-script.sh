@@ -2,7 +2,7 @@
 set -uo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 # Verify if protocol exists
 [[ -f ${config_path}/protocol.json ]] && info "OK protocol.json exists" || { error "protocol.json missing"; exit 1; }

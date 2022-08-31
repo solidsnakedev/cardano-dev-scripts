@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 #--------- Run program ---------
 info "This program requires 2 witnesses to sign the transaction in order to spend the utxo"

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 # Verify correct number of arguments  ---------
 if [[ "$#" -eq 0 || "$#" -ne 1 ]]; then error "Missing parameters" && info "Usage: recycle-utxo.sh <wallet-origin> "; exit 1; fi

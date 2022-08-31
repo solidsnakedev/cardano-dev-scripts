@@ -2,7 +2,7 @@
 set -o pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 #--------- Verification  ---------
 

@@ -2,6 +2,6 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 ${cardanocli} query tip --testnet-magic $TESTNET_MAGIC

@@ -1,7 +1,7 @@
 set -euo pipefail
 
 #--------- Import common paths and functions ---------
-source common.sh
+source common-utils.sh
 
 #--------- Run program ---------
 info "The following program will consume all the utxos from the native script"
