@@ -39,7 +39,9 @@ last_time(){
 #--------- Set the Path to your folders and binaries ---------
 key_path="/node/keys"
 address_path="/node/addresses"
-script_path="/node/scripts"
+#script_path="/node/scripts"
+native_script_path="/node/native-scripts"
+plutus_script_path="/node/plutus-scripts"
 data_path="/node/data"
 config_path="/node/configuration"
 transaction_path="/node/transactions"
