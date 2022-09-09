@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -eo pipefail
 
 #--------- Import common paths and functions ---------
 source common-utils.sh
