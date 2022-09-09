@@ -5,7 +5,7 @@ source common-utils.sh
 
 #--------- Help  ---------
 if [[ "$1" == "--help" ]]; then
-echo "cli-query-utxo-json.sh wallet1 | jq '. | {ada : ."2f296e95c76b7797640112e94a8e2ef3757c34aedc51ffbbb7d0aa0399cf2907#0".value.lovelace}'"
+echo "cli-query-utxo-json.sh wallet1 | jq '. | {ada : .\"2f296e95c76b7797640112e94a8e2ef3757c34aedc51ffbbb7d0aa0399cf2907#0\".value.lovelace}'"
 exit 0; fi
 
 #--------- Verification process  ---------
