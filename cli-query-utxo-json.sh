@@ -4,7 +4,12 @@
 source common-utils.sh
 
 #--------- Verification process  ---------
-if [[ "$#" -ne 1 ]]; then error "Missing parameters" && info "Usage: query-utxo <wallet-name>"; exit 1; fi
+if [[ "$#" -ne 1 ]]; then error "Missing parameters" && info "Usage: query-utxo <wallet-name> | --help"; exit 1; fi
+
+
+if [[ "$1" == "--help" ]]; then
+echo "cli-query-utxo-json.sh wallet1 | jq '. | {ada : ."2f296e95c76b7797640112e94a8e2ef3757c34aedc51ffbbb7d0aa0399cf2907#0".value.lovelace}'"
+exit 0; fi
 # Get wallet name
 wallet_origin=${1}
 
