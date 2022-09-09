@@ -22,6 +22,6 @@ wallet_origin=${1}
 ${cardanocli} query utxo \
   --testnet-magic $TESTNET_MAGIC \
   --address $(cat ${address_path}/${wallet_origin}.addr) \
-  --out-file ${datapath}/query-utxo.json
+  --out-file ${data_path}/query-utxo.json
 
-cat ${datapath}/query-utxo.json | jq 
+cat ${data_path}/query-utxo.json | jq 
